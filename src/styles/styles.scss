@@ -235,11 +235,40 @@
       -webkit-filter: blur(45px);
     }
 
+    @keyframes upndown {
+      0% {
+        translate: 0;
+      }
+      42% {
+        translate: 0;
+      }
+      50% {
+        translate: 0 -10px;
+      }
+      58% {
+        translate: 0;
+      }
+      65% {
+        translate: 0 -10px;
+      }
+      73% {
+        translate: 0;
+      }
+      100% {
+        translate: 0;
+      }
+    }
+
     .back {
       left: 20px;
     }
     .share {
       right: 20px;
+      animation: upndown 3s infinite ease;
+
+      &:hover {
+        animation: upndown 3s ease;
+      }
     }
 
     button {

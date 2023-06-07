@@ -171,9 +171,9 @@ const Result = () => {
   const spain_techno = "5JFLHZqB0yER8BTRy65iTn?si=1bfb1266e16b48c0";
 
   const africa_skate = "0YrFV6TDPxKx11Ppnt16OA?si=ed647f495329495b";
-  const africa_drill = "5JmKX2Lusk5iPAPmzF1dNo?si=bd008028bcb647de";
+  const africa_drill = "5VjpW1cjuUMgqJ5jCQ1E5p?si=f213a99a221d4bf3";
   const africa_basic = "3w7RsmWGNjq8c1Zee5KUmc?si=4c558c5b9b3240d1";
-  const africa_techno = "6JIrEwgQwSIfdYBGBJw3LK?si=d7a5b36ef9a64479";
+  const africa_techno = "6HhI6m83BFrMWBiSORlDN3?si=f1e556b9690b4cdc";
 
   useEffect(() => {
     //netherlands
