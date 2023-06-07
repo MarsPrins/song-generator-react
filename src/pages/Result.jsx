@@ -36,7 +36,7 @@ const Popup = (props) => {
   const protocol = window.location.protocol;
   const path = window.location.pathname;
 
-  const url = `${protocol}//${hostname}:3000/shared?art=${songArt}&name=${songName}&link=${songLink}`;
+  const url = `${protocol}//${hostname}/shared?art=${songArt}&name=${songName}&link=${songLink}`;
 
   return (
     <div className="popupCont">
@@ -325,6 +325,7 @@ const Result = () => {
               <div></div>
             </div>
             <p>Loading Results</p>
+            <p className="dif">Remember to share!</p>
           </div>
         </div>
       );
@@ -387,8 +388,14 @@ const Result = () => {
           </button>
 
           <Link target="_blank" to={songLink ? songLink : localLink}>
-            <img src={songArt ? songArt : localArt} alt="song" />
-            {/* <div>get link</div> */}
+            <div className="imgCont">
+              <img src={songArt ? songArt : localArt} alt="song" />
+              <span className="bgBefore"></span>
+              <span className="playButton">
+                <i class="fa-solid fa-play"></i>
+              </span>
+              {/* <div>get link</div> */}
+            </div>
           </Link>
           <figcaption>{songName ? songName : localName}</figcaption>
         </div>

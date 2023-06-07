@@ -21,7 +21,7 @@ const Share = () => {
     <div className="share">
       <div className="resultCont">
         <img src={songArt} alt="" className="bgBlur" />
-        <span className="topLeft"></span>
+        <span className="topLeft shareTopLeft"></span>
         <button
           className="topLeft"
           onClick={() => {
@@ -33,7 +33,14 @@ const Share = () => {
         </button>
 
         <Link target="_blank" to={songLink}>
-          <img src={songArt} alt="song" />
+          <div className="imgCont">
+            <img src={songArt} alt="song" />
+            <span className="bgBefore"></span>
+            <span className="playButton">
+              <i class="fa-solid fa-play"></i>
+            </span>
+            {/* <div>get link</div> */}
+          </div>
         </Link>
         <figcaption>{songName}</figcaption>
       </div>
