@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Question1 from "../components/Question1";
 import Question2 from "../components/Question2";
 import Question3 from "../components/Question3";
@@ -21,11 +21,11 @@ const Question = () => {
 
   useEffect(() => {
     if (pathname === "/") {
+      if (localStorage.getItem("songLoaded")) {
+        navigate("/results");
+      }
       navigate("/quiz");
-      localStorage.removeItem("gender");
-      localStorage.removeItem("race");
-      localStorage.removeItem("style");
-      localStorage.removeItem("language");
+      localStorage.clear();
     }
   });
 
@@ -43,6 +43,28 @@ const Question = () => {
     : null;
 
   const extension = ".jpeg";
+
+  const [screenSize, setScreenSize] = useState(getCurrentDimension());
+
+  function getCurrentDimension() {
+    return {
+      width: window.innerWidth,
+      height: window.innerHeight,
+    };
+  }
+
+  useEffect(() => {
+    const updateDimension = () => {
+      setScreenSize(getCurrentDimension());
+    };
+    window.addEventListener("resize", updateDimension);
+
+    return () => {
+      window.removeEventListener("resize", updateDimension);
+    };
+  }, [screenSize]);
+
+  console.log(screenSize.width);
 
   const question1 = (
     <Question1
@@ -65,16 +87,22 @@ const Question = () => {
       img1={images["skate-" + race + "-" + gender + extension]}
       img2={images["drill-" + race + "-" + gender + extension]}
       img3={images["basic-" + race + "-" + gender + extension]}
-      img4={images["emo-" + race + "-" + gender + extension]}
+      img4={images["techno-" + race + "-" + gender + extension]}
       option1={"skate"}
       option2={"drill"}
       option3={"basic"}
-      option4={"emo"}
+      option4={"techno"}
     />
   );
   const question4 = (
     <Question4
-      img1={images["netherlands" + extension]}
+      img1={
+        images[
+          screenSize.width >= 480
+            ? "netherlands" + extension
+            : "netherlands-mobile" + extension
+        ]
+      }
       img2={images["english" + extension]}
       img3={images["spain" + extension]}
       img4={images["africa" + extension]}

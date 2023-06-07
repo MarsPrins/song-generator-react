@@ -1,5 +1,21 @@
 @import "./variables.scss";
 
+.questionX {
+  @include mobile {
+    // display: grid;
+    // grid-template-rows: repeat(4, 1fr);
+    // grid-template-columns: repeat(2, 1fr);
+    flex-direction: column !important;
+    height: 100vh;
+  }
+  img {
+    @include mobile {
+      object-position: center !important;
+      height: 25vh !important;
+    }
+  }
+}
+
 .questionWrapper {
   width: 100vw;
   display: flex;
@@ -14,9 +30,9 @@
     padding: 0;
     margin: 0;
     position: relative;
-    flex: 1;
     cursor: pointer;
     overflow: hidden;
+
     &:hover img {
       scale: 1.1;
     }
@@ -42,18 +58,22 @@
       font-weight: bold;
       font-family: $titleFont;
       text-transform: capitalize;
+      @include w700 {
+        font-size: 20px;
+      }
     }
   }
 }
 
-.result {
+.result,
+.share {
   .loader {
     position: fixed;
     top: 0;
     left: 0;
     width: 100vw;
     height: 100vh;
-    background-color: $f4f4f4;
+    background-color: $secondaryColorLighter;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -97,7 +117,7 @@
         width: 13px;
         height: 13px;
         border-radius: 50%;
-        background: $blackText;
+        background: $secondaryColorDarker;
         animation-timing-function: cubic-bezier(0, 1, 1, 0);
       }
       div:nth-child(1) {
@@ -120,7 +140,7 @@
 
     p {
       font-family: sans-serif;
-      color: var(--txtBlack);
+      color: $secondaryColorDarker;
     }
   }
 
@@ -131,10 +151,16 @@
     z-index: 888;
     width: 100vw;
     height: 100vh;
-    background: $f4f4f4;
+    background: $secondaryColorLighter;
     .getSong {
-      width: 200px;
+      width: 250px;
       height: 50px;
+      background: $secondaryColor;
+      border: none;
+      color: $whiteText;
+      font-family: $titleFont;
+      cursor: pointer;
+      border-radius: 5px;
     }
   }
 
@@ -161,18 +187,189 @@
       color: $whiteText;
       font-family: $titleFont;
       font-size: 4dvw;
+      max-width: 50vw;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+
+    button.topLeft {
+      position: absolute;
+      left: 20px;
+      top: 20px;
+      display: flex;
+      flex-direction: column;
+      color: $whiteText;
+      cursor: pointer;
+      border: none;
+      outline: none;
+      p {
+        color: $whiteText;
+        font-family: $titleFont;
+      }
+    }
+
+    span.topLeft {
+      border-bottom-right-radius: 50%;
+      left: -55px;
+    }
+    span.topRight {
+      border-bottom-left-radius: 50%;
+      right: -55px;
+    }
+
+    span.topLeft,
+    span.topRight {
+      position: absolute;
+      top: -55px;
+      width: 150px;
+      height: 150px;
+      background: #5c5c5c;
+      filter: blur(45px);
+      -webkit-filter: blur(45px);
+    }
+
+    .back {
+      left: 20px;
+    }
+    .share {
+      right: 20px;
     }
 
     button {
       border: none;
       background: transparent;
       cursor: pointer;
-      position: absolute;
-      left: 20px;
       top: 20px;
+      position: absolute;
+
       i {
         scale: 1.3;
         color: $whiteText;
+      }
+    }
+  }
+}
+
+@keyframes up {
+  0% {
+    translate: -50% 600px;
+  }
+  100% {
+    translate: -50% 0;
+  }
+}
+@keyframes fadeIn {
+  0% {
+    background: rgba(31, 31, 31, 0);
+  }
+  100% {
+    background: rgba(31, 31, 31, 0.541);
+  }
+}
+
+.popupCont {
+  position: relative;
+  z-index: 199;
+  .popupBg {
+    z-index: -1;
+    width: 100vw;
+    height: 100vh;
+    user-select: none;
+    -webkit-user-drag: none;
+    position: absolute;
+    animation: fadeIn 0.8s forwards;
+  }
+  .popup {
+    width: 480px;
+    height: 350px;
+    border-top-left-radius: 45px;
+    border-top-right-radius: 45px;
+    background: linear-gradient(to bottom, $mainColor, $mainColor, $grey);
+    position: fixed;
+    left: 50%;
+    bottom: -30px;
+    translate: -50% 0;
+    overflow: scroll;
+    animation: up 0.7s forwards cubic-bezier(0.42, 0, 0.23, 1.25);
+    box-shadow: 0px 0px 15px 1px $blackText;
+
+    @include mobile {
+      height: auto;
+      width: 95vw;
+      bottom: -20px;
+    }
+
+    .top {
+      position: sticky;
+      top: 0;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 100px;
+      border-bottom: 1px solid $grey;
+      padding: 30px 30px 30px 20px;
+      background: $mainColor;
+      .left {
+        display: flex;
+        justify-content: center;
+        img {
+          width: 60px;
+          border-radius: 50%;
+        }
+        span {
+          overflow: hidden;
+          white-space: nowrap;
+          width: 120px;
+          text-overflow: ellipsis;
+          margin: auto;
+          padding-left: 10px;
+        }
+        i {
+          margin: auto;
+          padding-left: 5px;
+          cursor: pointer;
+
+          &:active {
+            scale: 0.8;
+          }
+        }
+      }
+      .right {
+        span {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          background: #d7d7d76d;
+          padding: 15px;
+          border-radius: 50%;
+          height: 40px;
+          opacity: 0.8;
+          cursor: pointer;
+
+          i {
+            scale: 1.3;
+            color: $blackText;
+          }
+        }
+      }
+    }
+
+    .bottom {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      padding: 20px;
+      @include mobile {
+        grid-template-columns: repeat(3, 1fr);
+      }
+      @include w350 {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .shareItem {
+        border-radius: 30%;
+        overflow: hidden;
+        margin: auto auto 10px auto;
       }
     }
   }

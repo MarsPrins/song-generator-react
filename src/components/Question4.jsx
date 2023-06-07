@@ -16,9 +16,7 @@ const Question4 = (props) => {
   };
 
   return (
-    <div className="questionWrapper">
-      <span className="overlay"></span>
-
+    <div className="questionWrapper questionX">
       <button
         className="question"
         onClick={() => {
