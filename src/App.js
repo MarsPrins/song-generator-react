@@ -1,3 +1,4 @@
+import NotFound from "./pages/NotFound";
 import Question from "./pages/Question";
 import Result from "./pages/Result";
 import Share from "./pages/Share";
@@ -10,6 +11,7 @@ function App() {
       <span className="overlay"></span>
 
       <Routes>
+        <Route path="*" element={<NotFound />}></Route>
         <Route path="/">
           <Route index element={<Question />} />
           <Route path="quiz" element={<Question />} />

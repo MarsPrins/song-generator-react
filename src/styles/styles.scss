@@ -461,3 +461,12 @@
     }
   }
 }
+
+.notFound {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column;
+  text-align: center;
+}
