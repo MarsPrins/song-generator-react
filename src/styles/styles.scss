@@ -289,7 +289,9 @@
     .imgCont {
       position: relative;
       &:hover span.playButton,
-      &:hover span.bgBefore {
+      &:hover span.bgBefore,
+      &:active span.playButton,
+      &:active span.bgBefore {
         background-size: 100% 100%;
         scale: 1.5;
       }
