@@ -86,12 +86,12 @@ const Question = () => {
     <Question3
       img1={images["skate-" + race + "-" + gender + extension]}
       img2={images["drill-" + race + "-" + gender + extension]}
-      img3={images["basic-" + race + "-" + gender + extension]}
-      img4={images["techno-" + race + "-" + gender + extension]}
+      img3={images["techno-" + race + "-" + gender + extension]}
+      img4={images["basic-" + race + "-" + gender + extension]}
       option1={"skate"}
       option2={"drill"}
-      option3={"basic"}
-      option4={"techno"}
+      option3={"techno"}
+      option4={"basic"}
     />
   );
   const question4 = (
