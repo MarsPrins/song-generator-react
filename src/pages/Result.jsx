@@ -36,7 +36,9 @@ const Popup = (props) => {
   const protocol = window.location.protocol;
   const path = window.location.pathname;
 
-  const url = `${protocol}//${hostname}/shared?art=${songArt}&name=${songName}&link=${songLink}`;
+  const url = `${protocol}//${hostname}/shared?art=${songArt}&name=${encodeURIComponent(
+    songName
+  )}&link=${songLink}`;
 
   return (
     <div className="popupCont">
