@@ -36,7 +36,7 @@
     overflow: hidden;
 
     &:hover img {
-      scale: 1.1;
+      scale: 1.05;
     }
 
     img {
@@ -45,7 +45,7 @@
       object-fit: cover;
       object-position: top;
       z-index: 1;
-      transition: 1s cubic-bezier(0.43, 0.14, 0.5, 1.02);
+      transition: 0.9s cubic-bezier(0.43, 0.14, 0.5, 1.02);
       user-select: none;
       -webkit-user-drag: none;
     }
